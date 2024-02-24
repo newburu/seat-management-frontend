@@ -19,6 +19,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Moment from 'react-moment'
 
 const EventIndex = () => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -59,7 +60,11 @@ const EventIndex = () => {
               return (
                 <TableRow key={event.id}>
                   <TableCell>{event.name}</TableCell>
-                  <TableCell>{event.start_time}</TableCell>
+                  <TableCell>
+                  <Moment format="YYYY/MM/DD HH:mm">
+                      {event.start_time}
+                  </Moment>
+                  </TableCell>
                   <TableCell>{event.place}</TableCell>
                   <TableCell>
                     <Button
@@ -104,9 +109,12 @@ const EventIndex = () => {
               borderRadius: "0.5em",
             }}
           >
-            <Box component="p">ID: {selectedEvent.id}</Box>
             <Box component="p">Name: {selectedEvent.name}</Box>
-            <Box component="p">StartTime: {selectedEvent.start_time}</Box>
+            <Box component="p">StartTime:
+              <Moment format="YYYY/MM/DD HH:mm">
+                {selectedEvent.start_time}
+              </Moment>
+            </Box>
             <Box component="p">Place: {selectedEvent.place}</Box>
             <Button onClick={() => handleShowDetails()} variant="contained">
               Close ✖️
