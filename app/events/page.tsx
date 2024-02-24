@@ -1,4 +1,5 @@
 "use client";
+import { Event } from '../../types/Event';
 
 import {
   TableContainer,
@@ -12,20 +13,12 @@ import {
   Box,
   Modal,
 } from "@mui/material";
+
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-type Event = {
-  id: number;
-  name: string;
-  start_time: Date;
-  place: string;
-  created_at: string;
-  updated_at: string;
-}
 
 const EventIndex = () => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -115,8 +108,6 @@ const EventIndex = () => {
             <Box component="p">Name: {selectedEvent.name}</Box>
             <Box component="p">StartTime: {selectedEvent.start_time}</Box>
             <Box component="p">Place: {selectedEvent.place}</Box>
-            <Box component="p">CreatedAt: {selectedEvent.created_at}</Box>
-            <Box component="p">UpdatedAt: {selectedEvent.updated_at}</Box>
             <Button onClick={() => handleShowDetails()} variant="contained">
               Close ✖️
             </Button>
