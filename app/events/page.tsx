@@ -46,15 +46,15 @@ const EventIndex = () => {
   return (
     <>
       <Typography variant="h4" align="center">
-        Event List
+        イベントリスト
       </Typography>
       <TableContainer>
         <Table sx={{ maxWidth: 650 }} align="center">
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>StartTime</TableCell>
-              <TableCell>Place</TableCell>
+              <TableCell>主催者</TableCell>
+              <TableCell>開始日時</TableCell>
+              <TableCell>場所</TableCell>
               <TableCell colSpan={2}></TableCell>
             </TableRow>
           </TableHead>
@@ -77,7 +77,7 @@ const EventIndex = () => {
                       startIcon={<VisibilityIcon />}
                       onClick={() => handleShowDetails(event.id)}
                     >
-                      SHOW
+                      参照
                     </Button>
                   </TableCell>
                   <TableCell>
@@ -88,7 +88,7 @@ const EventIndex = () => {
                       startIcon={<DeleteForeverIcon />}
                       onClick={() => deleteEvent(event.id)}
                     >
-                      DESTROY
+                      削除
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -112,13 +112,13 @@ const EventIndex = () => {
               borderRadius: "0.5em",
             }}
           >
-            <Box component="p">Name: {selectedEvent.name}</Box>
-            <Box component="p">StartTime:
+            <Box component="p">主催者: {selectedEvent.name}</Box>
+            <Box component="p">開催日時:
               <Moment format="YYYY/MM/DD HH:mm">
                 {selectedEvent.start_time}
               </Moment>
             </Box>
-            <Box component="p">Place: {selectedEvent.place}</Box>
+            <Box component="p">場所: {selectedEvent.place}</Box>
             <Button onClick={() => handleShowDetails()} variant="contained">
               Close ✖️
             </Button>
