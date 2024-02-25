@@ -1,5 +1,6 @@
 "use client";
-import { Event } from '../../types/Event';
+import { Event } from '/src/types/events';
+import { showConfirmDialog } from "/src/components/confirm-dialog";
 
 import {
   TableContainer,
@@ -36,6 +37,8 @@ const EventIndex = () => {
   const handleShowDetails = (id?: number) => setSelectedEventId(id || null);
 
   const deleteEvent = async (id: number) => {
+    const confirmed = await showConfirmDialog("削除しますか？", true);
+    if (!confirmed) return;
     await axios.delete(`http://localhost:3000/events/${id}.json`); // 指定したEventを削除するRailsのAPIを叩いている
     setEvents(events.filter((event) => event.id !== id));
   };
